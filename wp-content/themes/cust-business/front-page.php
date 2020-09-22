@@ -96,27 +96,27 @@
                 <div class="broch-info-content-card-image"><img src="/wp-content\images\stock\pexels-photo-3862129.jpg"></img></div>
                 
                 <div class="broch-info-content-text">
-                    <h2>Talent Acquisition</h2>
-                    <span>We provide a vast suite of options for executive needs, recruitment needs, or project management.</span>
+                    <h2>Engineering</h2>
+                    <span>We help finalize product ideas at any point of the design timeline: giving recommendations, providing insight, and fulfilling end use-cases.</span>
                     <button class="broch-button">Learn More</button>
                 </div>
             </div>
 
             <div class="broch-info-content-card">
-                <div class="broch-info-content-card-image"><img src="/wp-content\images\stock\pexels-photo-3861949.jpg"></img></div>
+                <div class="broch-info-content-card-image"><img src="/wp-content\images\stock\pexels-photo-753331.jpg"></img></div>
                 <div class="broch-info-content-text">
-                    <h2>Product Development</h2>
-                    <span>We accelerate product development at any stage of the creation process.</span>
+                    <h2>Logistics</h2>
+                    <span>Finding the most efficient transportation or providing safety through dangerous areas to get products where they are needed.</span>
                     <button class="broch-button">Learn More</button>
                 </div>
             </div>
 
             <div class="broch-info-content-card">
-                <div class="broch-info-content-card-image"><img src="/wp-content\images\stock\pexels-photo-327430.jpg"></img></div>
+                <div class="broch-info-content-card-image"><img src="/wp-content\images\stock\pexels-photo-4033148.jpg"></img></div>
                 
                 <div class="broch-info-content-text">
-                    <h2>Other Solutions</h2>
-                    <span>Our experience in numerous industries has given us a unique position to provide solutions to unconventional problems</span>
+                    <h2>Biotech</h2>
+                    <span>We have worked with companies at the forefront and utilize our expertise to provide catered solutions to improve research.</span>
                     <button class="broch-button">Learn More</button>
                 </div>
             </div>
@@ -127,30 +127,30 @@
 
 
             <div class="broch-info-content-card">
-                <div class="broch-info-content-card-image"><img src="/wp-content\images\stock\pexels-photo-3862129.jpg"></img></div>
+                <div class="broch-info-content-card-image"><img src="/wp-content\images\stock\pexels-photo-2892618.jpg"></img></div>
                 
                 <div class="broch-info-content-text">
-                    <h2>Talent Acquisition</h2>
-                    <span>We provide a vast suite of options for executive needs, recruitment needs, or project management.</span>
+                    <h2>Mining</h2>
+                    <span>Location analysis, tool acquisition, and logistics analysis will help with completion of projects.</span>
                     <button class="broch-button">Learn More</button>
                 </div>
             </div>
 
             <div class="broch-info-content-card">
-                <div class="broch-info-content-card-image"><img src="/wp-content\images\stock\pexels-photo-3861949.jpg"></img></div>
+                <div class="broch-info-content-card-image"><img src="/wp-content\images\stock\pexels-photo-3862137.jpg"></img></div>
                 <div class="broch-info-content-text">
-                    <h2>Product Development</h2>
-                    <span>We accelerate product development at any stage of the creation process.</span>
+                    <h2>Military</h2>
+                    <span>We provide analysis, acqusition, and training to individuals or groups..</span>
                     <button class="broch-button">Learn More</button>
                 </div>
             </div>
 
             <div class="broch-info-content-card">
-                <div class="broch-info-content-card-image"><img src="/wp-content\images\stock\pexels-photo-327430.jpg"></img></div>
+                <div class="broch-info-content-card-image"><img src="/wp-content\images\stock\pexels-photo-3861968.jpg"></img></div>
                 
                 <div class="broch-info-content-text">
-                    <h2>Other Solutions</h2>
-                    <span>Our experience in numerous industries has given us a unique position to provide solutions to unconventional problems</span>
+                    <h2>Technology</h2>
+                    <span>We leverage our knowledge and experts on the forefront of technological subjects to provide solutions</span>
                     <button class="broch-button">Learn More</button>
                 </div>
             </div>
@@ -184,7 +184,7 @@
 </div>
 
 <div class="parent yellow">
-    <div class="broch-container broch-highlight-container">
+    <div class="broch-container broch-highlight-container double-text">
         <!-- <div class="broch-highlight-title noselect">Why Us</div> -->
         <div class="broch-highlight-text-container bw40 bh100 bjc bac bdynamic">
             <div class="broch-highlight-content">
@@ -202,8 +202,6 @@
             </div>
         </div>
     </div>
-    <div class="broch-block-pattern top"></div>
-    <div class="broch-block-pattern bottom"></div>
 </div>
 
 

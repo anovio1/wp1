@@ -8,13 +8,15 @@
 <body <?php body_class();?>>
 
 
-<header class="d-flex sticky-top justify-content-center">
+<header class="d-flex sticky-top justify-content-center unfilled">
         <div class="nav_header">
             <div class="navLogo-container">
                 <?php bb_getLogo()?>
             </div>
             <div class="navMenu noselect">
                 <div class="navCollapseButton" expanded="false">
+                    <div id="navRect1" class="navRect"></div>
+                    <div id="navRect2" class="navRect"></div>
                 </div>
                 <?php wp_nav_menu(
                     array(

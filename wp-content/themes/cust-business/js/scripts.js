@@ -12,11 +12,13 @@ $('.navCollapseButton').on('click',function(){
     if(menuButton.attr("expanded")=="false"){
         console.log('expand');
         menuContainer.addClass('open');
+        $(this).addClass('open');
         menuButton.attr("expanded","true");
     }
     else{
         console.log('close');
         menuContainer.removeClass('open');
+        $(this).removeClass('open');
         menuButton.attr("expanded","false");
     }
 })

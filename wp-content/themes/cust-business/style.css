@@ -34,7 +34,7 @@
 @-webkit-keyframes topNav_borderBottom_Dis {
   0% {
     background: rgba(191, 191, 191, 0.5);
-    bottom: -10px;
+    bottom: 0px;
     opacity: 1;
   }
   50% {
@@ -52,7 +52,7 @@
 @keyframes topNav_borderBottom_Dis {
   0% {
     background: rgba(191, 191, 191, 0.5);
-    bottom: -10px;
+    bottom: 0px;
     opacity: 1;
   }
   50% {
@@ -145,25 +145,77 @@ header {
   position: absolute;
   width: 100%;
   height: 75px;
-  -webkit-transition: .2s background-color;
-  transition: .2s background-color;
+  -webkit-transition: .2s linear all;
+  transition: .2s linear all;
   opacity: 1;
   background: rgba(255, 255, 255, 0);
 }
 
 header.filled {
-  -webkit-animation: topNav_compress .5s both ease-out;
-          animation: topNav_compress .5s both ease-out;
+  height: calc(75px - 10px);
+  background: white;
+  -webkit-animation: topNav_compress .5s ease-out;
+          animation: topNav_compress .5s ease-out;
 }
 
 header.filled .broch-header-bottom {
   bottom: 0px;
-  -webkit-animation: topNav_borderBottom_Dis .7s both ease-out;
-          animation: topNav_borderBottom_Dis .7s both ease-out;
+  background: #bfbfbf;
+  opacity: 0;
+  -webkit-animation: topNav_borderBottom_Dis .7s ease-out;
+          animation: topNav_borderBottom_Dis .7s ease-out;
 }
 
 header.filled .navMenu > .menu-topmenu-container > ul > li > a {
   color: black;
+}
+
+header.unfilled div.nav_header > div.navMenu.noselect > div.menu-topmenu-container.ready.open > ul li a {
+  background: rgba(128, 128, 128, 0.5);
+}
+
+header.unfilled div.nav_header > div.navMenu.noselect > div.menu-topmenu-container.ready.open > ul li:not(:last-child) a:after {
+  content: '';
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border: 1px;
+}
+
+header.unfilled div.nav_header > div.navMenu.noselect > div.menu-topmenu-container.ready.open > ul li:last-child a {
+  border-radius: 0px 0px 0px 5px;
+}
+
+header:last-child a:after {
+  display: none;
+}
+
+header.unfilled.filled div.nav_header > div.navMenu.noselect > div.menu-topmenu-container.ready.open > ul li a {
+  background: #d9d9d9;
+}
+
+header.unfilled.filled div.nav_header > div.navMenu.noselect > div.menu-topmenu-container.ready.open > ul li:not(:last-child) a:after {
+  content: '';
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 1px;
+  background: rgba(128, 128, 128, 0.3);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border: 1px;
+}
+
+header.unfilled.filled div.nav_header > div.navMenu.noselect > div.menu-topmenu-container.ready.open > ul li:last-child a {
+  border-radius: 0px 0px 0px 5px;
 }
 
 .noselect {
@@ -216,6 +268,7 @@ header.filled .navMenu > .menu-topmenu-container > ul > li > a {
 }
 
 .broch-button {
+  outline: none;
   background: none;
   font-size: 15px;
   font-family: "PT Sans";
@@ -224,7 +277,6 @@ header.filled .navMenu > .menu-topmenu-container > ul > li > a {
   width: -moz-fit-content;
   width: fit-content;
   border: none;
-  outline: none;
   position: relative;
   display: block;
   padding: 0 1.875em 0 0;
@@ -233,6 +285,10 @@ header.filled .navMenu > .menu-topmenu-container > ul > li > a {
   color: #f1962a;
   -webkit-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
+}
+
+.broch-button:focus {
+  outline: none;
 }
 
 .broch-button.large {
@@ -357,25 +413,142 @@ header.filled .navMenu > .menu-topmenu-container > ul > li > a {
   z-index: 1;
 }
 
+@-webkit-keyframes burgerToXTop {
+  0% {
+    margin: 5px;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  50% {
+    margin: 0px;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  99% {
+  }
+  100% {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+}
+
+@keyframes burgerToXTop {
+  0% {
+    margin: 5px;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  50% {
+    margin: 0px;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  99% {
+  }
+  100% {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+}
+
+@-webkit-keyframes burgerToXTop2 {
+  0% {
+    margin: 5px;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  50% {
+    margin: -1px;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  99% {
+  }
+  100% {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+}
+
+@keyframes burgerToXTop2 {
+  0% {
+    margin: 5px;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  50% {
+    margin: -1px;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  99% {
+  }
+  100% {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+}
+
 @media (max-width: 767px) {
   .navMenu .navCollapseButton {
     vertical-align: top;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     width: 75px;
     height: 100%;
-    background: salmon;
     float: right;
     -webkit-transition: .2s background;
     transition: .2s background;
+    background: rgba(64, 64, 64, 0.3);
   }
   .navMenu .navCollapseButton:hover {
-    background: #d35d50;
+    background: rgba(89, 89, 89, 0.3);
     cursor: pointer;
   }
   .navMenu .navCollapseButton:active {
-    background: #cc4233;
+    background: rgba(166, 166, 166, 0.3);
+    -webkit-transition: .1s background;
+    transition: .1s background;
+  }
+  .navMenu .navCollapseButton.open .navRect#navRect1 {
+    -webkit-animation: burgerToXTop .3s;
+            animation: burgerToXTop .3s;
+    margin: 0px;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  .navMenu .navCollapseButton.open .navRect#navRect2 {
+    -webkit-animation: burgerToXTop2 .3s;
+            animation: burgerToXTop2 .3s;
+    margin: -1px;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+  .navMenu .navCollapseButton .navRect {
+    -webkit-transition: margin 0.3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) 0.2s, -webkit-transform 0.3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) 0.05s;
+    transition: margin 0.3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) 0.2s, -webkit-transform 0.3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) 0.05s;
+    transition: transform 0.3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) 0.05s, margin 0.3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) 0.2s;
+    transition: transform 0.3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) 0.05s, margin 0.3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) 0.2s, -webkit-transform 0.3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) 0.05s;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    margin: 5px;
+    -webkit-transform-origin: center;
+            transform-origin: center;
+    display: inline;
+    background-color: white;
+    height: 1px;
+    width: 21px;
   }
 }
 
@@ -411,7 +584,7 @@ header.filled .navMenu > .menu-topmenu-container > ul > li > a {
     width: 170px;
   }
   .nav_topMenu li > a {
-    height: 75px;
+    height: 65px;
     width: 100%;
     -webkit-box-pack: start !important;
         -ms-flex-pack: start !important;
@@ -437,12 +610,15 @@ header.filled .navMenu > .menu-topmenu-container > ul > li > a {
   width: 100%;
   max-width: 1200px;
   background: rgba(191, 191, 191, 0.5);
-  bottom: -10px;
+  bottom: 0px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-item-align: center;
       align-self: center;
+  opacity: 1;
+  -webkit-transition: .2s ease-in all;
+  transition: .2s ease-in all;
 }
 
 .menu-topmenu-container {
@@ -500,15 +676,17 @@ header.filled .navMenu > .menu-topmenu-container > ul > li > a {
   display: none;
 }
 
-.menu-topmenu-container .nav_topMenu li a:after {
-  content: '';
-  position: absolute;
-  top: 33%;
-  bottom: 0;
-  background: #f1f1f1;
-  width: 1px;
-  height: 33%;
-  right: 0;
+@media (min-width: 768px) {
+  .menu-topmenu-container .nav_topMenu li a:after {
+    content: '';
+    position: absolute;
+    top: 33%;
+    bottom: 0;
+    background: #f1f1f1;
+    width: 1px;
+    height: 33%;
+    right: 0;
+  }
 }
 
 .parent {
@@ -658,6 +836,12 @@ header.filled .navMenu > .menu-topmenu-container > ul > li > a {
   overflow: hidden;
 }
 
+.broch-highlight-container.double-text {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 .broch-highlight-container .broch-highlight-content {
   z-index: 10;
   max-width: 100%;
@@ -678,6 +862,12 @@ header.filled .navMenu > .menu-topmenu-container > ul > li > a {
 
 .broch-highlight-container .broch-highlight-content h1 {
   font-size: 30px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.broch-highlight-container .broch-highlight-content h2 {
+  font-size: 25px;
   font-weight: 600;
   color: #333333;
 }
@@ -738,10 +928,6 @@ header.filled .navMenu > .menu-topmenu-container > ul > li > a {
   .broch-info-container .broch-info-content-text span {
     height: 60% !important;
   }
-  .broch-info-container .broch-info-content-text button {
-    position: absolute;
-    bottom: 0;
-  }
   .broch-info-container .broch-info-content-card-image {
     height: 50%;
   }
@@ -759,6 +945,7 @@ header.filled .navMenu > .menu-topmenu-container > ul > li > a {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  padding: 25px 0px;
 }
 
 .broch-info-container .broch-info-content-container .broch-info-content-card {
@@ -795,6 +982,7 @@ header.filled .navMenu > .menu-topmenu-container > ul > li > a {
 }
 
 .broch-info-container .broch-info-content-container .broch-info-content-card .broch-info-content-text h2 {
+  height: 20%;
   padding: 25px 0px 10px 0px;
   font-size: calc(15px + .5vmax);
   font-family: "PT Sans";
@@ -814,5 +1002,19 @@ header.filled .navMenu > .menu-topmenu-container > ul > li > a {
   color: #4c94bd;
   line-height: 1.1;
   text-align: left;
+}
+
+.broch-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #404040;
+  color: #a6a6a6;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 /*# sourceMappingURL=style.css.map */

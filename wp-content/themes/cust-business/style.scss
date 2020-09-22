@@ -20,7 +20,7 @@ $broch-page-content-maxWidth: 1200px;
 @keyframes topNav_borderBottom_Dis{
     0% {
         background: hsla(0, 0, 75, .5);
-        bottom: -10px;
+        bottom: 0px;
         opacity: 1;
     }
     50%{
@@ -269,18 +269,79 @@ header{
     position: absolute;
     width: 100%;
     height: 75px;
-    transition: .2s background-color;
+    transition: .2s linear all;
     opacity: 1;
     background:hsla(0, 0, 100,0);
     &.filled{
-        animation: topNav_compress .5s both ease-out;
+        height:calc(#{$topnav-height} - 10px);
+        background:hsla(0, 0, 100,1);
+        animation: topNav_compress .5s ease-out;
         .broch-header-bottom{
             bottom: 0px;
-            animation: topNav_borderBottom_Dis .7s both ease-out;
+            background: hsla(0, 0, 75, 1);
+            opacity: 0;
+            animation: topNav_borderBottom_Dis .7s ease-out;
         }
         .navMenu > .menu-topmenu-container > ul > li > a{
             color: black;
         }   
+    }
+    &.unfilled{
+        div.nav_header > div.navMenu.noselect > div.menu-topmenu-container.ready.open > ul{
+            li{
+                a{
+                    background: hsla(0, 0%, 50%, .5);
+                }
+                &:not(:last-child){
+                    a:after{
+                        content: '';
+                        display: flex;
+                        width: 100%;
+                        height: 1px;
+                        background: hsla(0, 0%, 100%, .3);
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        border: 1px;
+                    }
+                }
+                &:last-child{
+                    a{
+                        border-radius: 0px 0px 0px 5px;
+                    }
+                }
+            }
+        }
+    }
+    &:last-child{
+        a:after{display: none;}
+    }
+    &.unfilled.filled{
+        div.nav_header > div.navMenu.noselect > div.menu-topmenu-container.ready.open > ul{
+            li{
+                a{
+                    background: hsla(0, 0%, 85%, 1);
+                }
+                &:not(:last-child){
+                    a:after{
+                        content: '';
+                        display: flex;
+                        width: 100%;
+                        height: 1px;
+                        background: hsla(0, 0%, 50%, .3);
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        border: 1px;
+                    }
+                }
+                &:last-child{
+                    a{
+                        border-radius: 0px 0px 0px 5px;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -316,6 +377,10 @@ header{
 
 
 .broch-button{
+    outline:none;
+    &:focus{
+        outline: none;
+    }
     background: none;
     font-size: 15px;
     &.large{
@@ -328,7 +393,6 @@ header{
     color: #f1962a;
     width: fit-content;
     border: none;
-    outline:none;
     position: relative;
     display: block;
     padding: 0 ($arrow-size * 2.5) 0 0;
@@ -422,22 +486,81 @@ header{
 }
 // right-side of header bar
 
+@keyframes burgerToXTop{
+    0%{
+        margin: 5px;
+        transform: rotate(0deg);
+    }
+    50%{
+        margin: 0px;
+        transform: rotate(0deg);
+    }
+    99%{}
+    100% {
+        transform: rotate(45deg);
+    }
+}
+@keyframes burgerToXTop2{
+    0%{
+        margin: 5px;
+        transform: rotate(0deg);
+    }
+    50%{
+        margin: -1px;
+        transform: rotate(0deg);
+    }
+    99%{}
+    100% {
+        transform: rotate(-45deg);
+    }
+}
+
 @include media("<tablet") {
     .navMenu{
         .navCollapseButton{
             vertical-align: top;
             display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
             width: 75px;
             height: 100%;
-            background: salmon;
             float: right;
             transition: .2s background;
+            background: hsla(0, 0%, 25%, .3);
             &:hover{
-                background: hsl(6, 60%, 57%);
+                background: hsla(0, 0%, 35%, .3);
                 cursor:pointer;
             }
             &:active{
-                background: hsl(6, 60%, 50%);
+                background: hsla(0, 0%, 65%, .3);
+                transition: .1s background;
+            }
+
+            &.open{
+                .navRect{
+                    &#navRect1{
+                        animation: burgerToXTop .3s;
+                        margin: 0px;
+                        transform: rotate(45deg);
+                    }
+                    &#navRect2{
+                        animation: burgerToXTop2 .3s;
+                        margin: -1px;
+                        transform: rotate(-45deg);
+                    }
+                }
+            }
+            .navRect{
+                transition: transform .3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) .05s, margin .3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) .2s;
+                transform: rotate(0deg);
+                margin: 5px;
+
+                transform-origin: center;
+                display: inline;
+                background-color: white;
+                height: 1px;
+                width: 21px;
             }
         }
     }
@@ -467,7 +590,7 @@ header{
             width: 170px;
         }
         li > a{
-            height: 75px;
+            height: 65px;
             width: 100%;
             justify-content: flex-start !important;
             background-color: hsl(0,0,60);
@@ -491,9 +614,11 @@ header{
     width: 100%;
     max-width: $broch-page-content-maxWidth;
     background: hsla(0, 0, 75, .5);
-    bottom: -10px;
+    bottom: 0px;
     display: flex;
     align-self: center;
+    opacity: 1;
+    transition: .2s ease-in all;
 }
 
 .menu-topmenu-container{
@@ -526,15 +651,18 @@ header{
                     background-color: salmon;
                     &:after{display: none;}
                 }
-                &:after{
-                    content: '';
-                    position: absolute;
-                    top: 33%;
-                    bottom: 0;
-                    background: #f1f1f1;
-                    width: 1px;
-                    height: 33%;
-                    right: 0;
+                
+                @include media(">=tablet") {
+                    &:after{
+                        content: '';
+                        position: absolute;
+                        top: 33%;
+                        bottom: 0;
+                        background: #f1f1f1;
+                        width: 1px;
+                        height: 33%;
+                        right: 0;
+                    }
                 }
             }
         }
@@ -664,6 +792,10 @@ border: 1px greenyellow solid;
     position: relative;
     overflow: hidden;
 
+    &.double-text{
+        justify-content: space-between;
+    }
+
 
     .broch-highlight-content{
         z-index: 10;
@@ -678,6 +810,11 @@ border: 1px greenyellow solid;
         padding: 0px 70px 0px 0px;
         h1{
             font-size: 30px;
+            font-weight: 600;
+            color: hsl(0,0,20);
+        }
+        h2{
+            font-size: 25px;
             font-weight: 600;
             color: hsl(0,0,20);
         }
@@ -729,8 +866,6 @@ border: 1px greenyellow solid;
             height: 60% !important;
         }
         .broch-info-content-text button{
-            position: absolute;
-            bottom: 0;
         }
         .broch-info-content-card-image{
             height: 50%;
@@ -745,6 +880,7 @@ border: 1px greenyellow solid;
         height: 90%;
         width: 100%;
         justify-content: space-between;
+        padding: 25px 0px;
         .broch-info-content-card{
             display: inline-flex;
             flex-direction: column;
@@ -766,6 +902,7 @@ border: 1px greenyellow solid;
                 width: 100%;
                 position: relative;
                 h2{
+                    height: 20%;
                     padding: 25px 0px 10px 0px;
                     font-size: calc(15px + .5vmax);
                     font-family: "PT Sans";
@@ -787,4 +924,12 @@ border: 1px greenyellow solid;
             }
         }
     }
+}
+
+.broch-footer{
+    display: flex;
+    background-color: hsl(0,0%,25%);
+    color: hsl(0, 0%, 65%);
+    justify-content: center;
+    align-items: center;
 }
