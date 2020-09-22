@@ -740,7 +740,8 @@ function bizberg_get_slider_1(){
 	        </div>
 
 	        <div class="bizberg_shape_divider_slider_homepage_wrapper">
-	        	<?php echo wp_kses_post( bizberg_get_shape_divider() ); ?>
+	        	<?php// echo wp_kses_post( bizberg_get_shape_divider() ); ?>
+				<img src="/wp-content/images/shape_divider.png"><img>
 	        </div>
 	        
 	    </section>
@@ -765,6 +766,7 @@ function bizberg_get_shape_divider(){
 
 	if( $shape_divider_bottom != 'none' ){
 		
+		return '<div class="bizberg_shape_divider_slider_homepage ' . $shape_divider_flip_horizontal_class . ' "><img src="' . esc_url( get_template_directory_uri() . '/assets/images/shape-divider/' . $shape_divider_bottom ) . '" ></div>';
 		return '<div class="bizberg_shape_divider_slider_homepage ' . $shape_divider_flip_horizontal_class . ' "><img src="' . esc_url( get_template_directory_uri() . '/assets/images/shape-divider/' . $shape_divider_bottom ) . '" ></div>';
 
 	}

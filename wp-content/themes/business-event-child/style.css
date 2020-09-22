@@ -1,0 +1,127 @@
+/*
+ Theme Name:   Business Event Child
+	Template: bizberg
+	Text Domain: business-event
+	Author: Cyclone Themes
+	Author URI: https://cyclonethemes.com/
+	Theme URI: https://bizbergthemes.com/downloads/business-event-lite/
+	License: GNU General Public License v3 or later
+	License URI: http://www.gnu.org/licenses/gpl-3.0.html
+	Description: Business Event theme is a dedicated event WordPress theme for business meetups, technology conferences and exhibitions, product release events, business conferences and all other sorts of marketing and business events. A theme compatible with WP Event Manager plugin. Also, It offers special features and templates so it works perfectly with all page builders like Elementor, Visual Composer, Beaver Builder, SiteOrigin, Divi, etc. This Free WordPress theme is fully responsive, cross-browser compatible, translation ready & SEO friendly. If you run into any problem while using our theme, you can refer to extensive documentation or contact our friendly support team. It fully supports Elementor, all the sections are made from Elementor.
+	Tags: custom-logo,custom-menu,featured-images,threaded-comments,translation-ready,left-sidebar,right-sidebar,grid-layout,theme-options,blog,news,portfolio
+	Version: 0.3
+	Tested up to: 5.5
+	Requires PHP: 5.6
+*/
+#masthead > nav {
+  height: 60px;
+}
+
+.navbar-default .navbar-nav > li > a:after {
+  content: '';
+  position: absolute;
+  top: 33%;
+  bottom: 0;
+  background: #f1f1f1;
+  width: 1px;
+  height: 33%;
+  right: 0;
+}
+
+@media only screen and (max-width: 1024px) {
+  #responsive-menu {
+    display: none !important;
+  }
+}
+
+#navbar, #navbar > div, #responsive-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100% !important;
+}
+
+#navbar > div > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.logo {
+  padding: 0 0;
+}
+
+.navbar-default .has-no-menu-description .navbar-nav > li > a {
+  padding: 0 0;
+}
+
+#responsive-menu {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+}
+
+#responsive-menu li.page_item {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 0px;
+}
+
+#responsive-menu li.page_item a {
+  padding: 0 20px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#navbar > div > div > a img {
+  -webkit-filter: contrast(0.5);
+          filter: contrast(0.5);
+  -webkit-transition: .2s filter;
+  transition: .2s filter;
+}
+
+#navbar > div > div > a:hover img {
+  -webkit-filter: contrast(0.9);
+          filter: contrast(0.9);
+}
+
+@media only screen and (max-width: 1024px) {
+  .slicknav_btn {
+    top: 0;
+  }
+}
+
+body > section.banner > div.slider > div > div.swiper-wrapper > div > div > div.overlay {
+  background: url("/wp-content/images/exo_1.jpg");
+  background-size: cover;
+}
+
+body > section.banner > div.slider > div > div.swiper-wrapper > div > div > div.swiper-content.swiper-content-bizberg > h1 {
+  font-family: raleway;
+}
+
+body > section.banner > div.bizberg_shape_divider_slider_homepage_wrapper {
+  position: absolute;
+  bottom: 0px;
+  z-index: 1;
+}
+/*# sourceMappingURL=style.css.map */

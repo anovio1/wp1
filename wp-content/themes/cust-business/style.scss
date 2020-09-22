@@ -1,0 +1,790 @@
+/*
+    Theme Name: Business-Brochure
+    Author: an1
+*/
+// The mdia mixin
+
+$arrow-color: #f1962a;
+$arrow-size: .75em;
+$arrow-border: 0.2em;
+$topnav-height: 75px;
+$broch-page-content-maxWidth: 1200px;
+
+@keyframes topNav_compress{
+    0%{height:$topnav-height; background:hsla(0, 0, 100,0);}
+    70%{}
+    99%{}
+    100% {height:calc(#{$topnav-height} - 10px); background:hsla(0, 0, 100,1);}
+}
+
+@keyframes topNav_borderBottom_Dis{
+    0% {
+        background: hsla(0, 0, 75, .5);
+        bottom: -10px;
+        opacity: 1;
+    }
+    50%{
+        bottom: 0;
+    }
+    75%{
+        background: hsla(0, 0, 75, .1);
+    }
+    100%{
+        background: hsla(0, 0, 75, 1);
+        opacity: 0;
+    }
+}
+
+@keyframes close_navMenu{
+    0%{opacity: 1; visibility:visible;height:100%}
+    70%{visibility:visible;}
+    99%{visibility:hidden;}
+    100% { opacity: 0;height: 0;visibility:hidden;}
+  }
+@keyframes open_navMenu{
+    0%{height:0%; opacity: 0;}
+    70%{opacity: 1;}
+    99%{}
+    100% {height:100%; opacity: 1;}
+}
+
+$unit-intervals: (
+	'px': 1, 
+	'em': 0.01, 
+	'rem': 0.1
+) !default;
+$breakpoints: (
+    phone:640px,
+    tablet: 768px,
+    desktop: 1024px)
+    !default;
+$media-expressions: (
+    'screen': 'screen', 
+    'print': 'print', 
+    'handheld': 'handheld',
+    'retina2x': (
+        '(-webkit-min-device-pixel-ratio: 2)', 
+        '(min-resolution: 192dpi)'
+    ), 
+    'retina3x': (
+        '(-webkit-min-device-pixel-ratio: 3)', 
+        '(min-resolution: 350dpi)'
+    )
+) !default;
+@mixin media($conditions...) {
+    @for $i from 1 through length($conditions) {
+        $conditions: set-nth($conditions, $i, parse-expression(nth($conditions, $i)));
+    }
+
+    $branches: get-query-branches($conditions);
+    $query: '';
+
+    @each $branch in $branches {
+        @if (str-length($query) != 0) {
+        $query: $query + ', ';
+        }
+
+        $query: $query + $branch;
+    }
+
+    @media #{$query} {
+        @content;
+    }
+}
+@function get-query-branches($expressions) {
+    $result: '';
+    $has-groups: false;
+
+    // Getting initial snapshot and looking for groups
+    @each $expression in $expressions {
+        @if (str-length($result) != 0) {
+        $result: $result + ' and ';
+        }
+
+        @if (type-of($expression) == 'string') {
+        $result: $result + $expression;
+        } @else if (type-of($expression) == 'list') {
+        $result: $result + nth($expression, 1);
+        $has-groups: true;
+        } @else {
+        @warn '#{$expression} is not a valid expression.';
+        }
+    }
+
+    // If we have groups, we have to create all possible combinations
+    @if $has-groups {
+        @each $expression in $expressions {
+        @if (type-of($expression) == 'list') {
+            $first: nth($expression, 1);
+
+            @each $member in $expression {
+            @if ($member != $first) {
+                @each $partial in $result {
+                $result: join($result, str-replace-first($first, $member, $partial));
+                }
+            }
+            }
+        }
+        }
+    }
+
+    @return $result;
+}
+@function parse-expression($expression) {
+    $operator: '';
+    $value: '';
+    $element: '';
+    $result: '';
+    $is-width: true;
+
+    @if (type-of($expression) != 'string') {
+        @warn 'Expression with type `#{type-of($expression)}` detected, string expected.';
+    }
+
+    // Separating the operator from the rest of the expression
+    @if (str-slice($expression, 2, 2) == '=') {
+        $operator: str-slice($expression, 1, 2);
+        $value: str-slice($expression, 3);
+    } @else {
+        $operator: str-slice($expression, 1, 1);
+        $value: str-slice($expression, 2);
+    }
+
+    // Checking what type of expression we're dealing with
+    @if map-has-key($breakpoints, $value) {
+        $result: map-get($breakpoints, $value);
+    } @else if map-has-key($media-expressions, $expression) {
+        $result: map-get($media-expressions, $expression);
+        $is-width: false;
+    } @else {
+        $result: to-number($value);
+    }
+
+    @if ($is-width) {
+        $unit: unit($result);
+        $interval: 0;
+        
+        @if (map-has-key($unit-intervals, $unit)) {
+        $interval: map-get($unit-intervals, $unit);
+        } @else {
+        @warn 'Unknown unit: #{$unit}';
+        } 
+            
+        @if ($operator == '>') {
+        $element: '(min-width: #{$result + $interval})';
+        } @else if ($operator == '<') {
+        $element: '(max-width: #{$result - $interval})';
+        } @else if ($operator == '>=') {
+        $element: '(min-width: #{$result})';
+        } @else if ($operator == '<=') {
+        $element: '(max-width: #{$result})';
+        } @else {
+        @warn '#{$expression} is missing an operator.';
+        }
+    } @else {
+        $element: $result;
+    }
+
+    @return $element;
+}
+@function str-replace-first($search, $replace, $subject) {
+    $search-start: str-index($subject, $search);
+
+    @if $search-start == null {
+        @return $subject;
+    }
+
+    $result: str-slice($subject, 0, $search-start - 1);
+    $result: $result + $replace;
+    $result: $result + str-slice($subject, $search-start + str-length($search));
+
+    @return $result;
+}
+@function to-number($string) {
+    // Matrices
+    $strings: '0' '1' '2' '3' '4' '5' '6' '7' '8' '9';
+    $numbers:  0   1   2   3   4   5   6   7   8   9;
+    
+    // Result
+    $result: 0;
+    $divider: 0;
+    $minus: false;
+  
+    // Looping through all characters
+    @for $i from 1 through str-length($string) {
+      $character: str-slice($string, $i, $i);
+      $index: index($strings, $character);
+      
+    
+      @if $character == '-' {
+        $minus: true;
+      }
+      
+      @else if $character == '.' {
+        $divider: 1;
+      }
+      
+      @else {
+        @if type-of($index) != 'number' {
+          $result: if($minus, $result * -1, $result);
+          @return _length($result, str-slice($string, $i));
+        }
+  
+        $number: nth($numbers, $index);
+        
+        @if $divider == 0 {
+          $result: $result * 10;
+        }
+        
+        @else {
+          // Move the decimal dot to the left
+          $divider: $divider * 10;
+          $number: $number / $divider;
+        }
+        
+        $result: $result + $number;
+      }
+    }
+    
+    @return if($minus, $result * -1, $result);
+}
+@function _length($number, $unit) {
+    $strings: 'px' 'cm' 'mm' '%' 'ch' 'pica' 'in' 'em' 'rem' 'pt' 'pc' 'ex' 'vw' 'vh' 'vmin' 'vmax';
+    $units:   1px  1cm  1mm  1%  1ch  1pica  1in  1em  1rem  1pt  1pc  1ex  1vw  1vh  1vmin  1vmax;
+    $index: index($strings, $unit);
+
+    @if type-of($index) != 'number' {
+        @warn 'Unknown unit `#{$unit}`.';
+        @return false;
+    }
+
+    @return $number * nth($units, $index);
+}
+  
+body{
+    background:hsl(0,0,99);
+}
+
+header{
+    position: absolute;
+    width: 100%;
+    height: 75px;
+    transition: .2s background-color;
+    opacity: 1;
+    background:hsla(0, 0, 100,0);
+    &.filled{
+        animation: topNav_compress .5s both ease-out;
+        .broch-header-bottom{
+            bottom: 0px;
+            animation: topNav_borderBottom_Dis .7s both ease-out;
+        }
+        .navMenu > .menu-topmenu-container > ul > li > a{
+            color: black;
+        }   
+    }
+}
+
+//globals
+.noselect{
+    user-select: none;
+}
+
+.bjc{
+    justify-content: center;
+}
+
+.bac{
+    align-items: center;
+}
+
+.bw40,.bw50,.bw60{
+    display: inline-flex;
+    &.bdynamic{
+        max-width: 100%;
+    }
+}
+.bw40{ width: 40%;}
+.bw50{ width: 50%;}
+.bw60{ width: 60%;}
+
+.bh100{
+    height: 100%;
+    &.bdynamic{
+        max-height: 100%;
+    }
+}
+
+
+.broch-button{
+    background: none;
+    font-size: 15px;
+    &.large{
+        font-size: 20px;
+    }
+    &.medium{
+        font-size: 15px;
+    }
+    font-family: "PT Sans";
+    color: #f1962a;
+    width: fit-content;
+    border: none;
+    outline:none;
+    position: relative;
+    display: block;
+    padding: 0 ($arrow-size * 2.5) 0 0;
+    font-weight: bold;
+    text-decoration: none;
+    color: $arrow-color;
+    transition: all 0.25s ease-in-out;
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        transition: all 0.25s ease-in-out;
+        top: 50%;
+        right: $arrow-size;
+        width: $arrow-size;
+        height: $arrow-size;
+        transform-origin: 50% 50%;
+        transform:  translate(-.25em, -($arrow-size / 2)) rotate(45deg);
+        box-shadow: inset -#{$arrow-border} $arrow-border 0 0 $arrow-color;
+        border-radius: 0 $arrow-size*0.15 0 0;
+    }
+    &:hover {
+        color: hsl(33, 88%, 45%);
+      &:before {
+        box-shadow: inset -#{$arrow-border} $arrow-border 0 0 hsl(33, 88%, 45%);
+        transform:  translate(-.10em, -($arrow-size / 2)) rotate(45deg);
+      }
+    }
+    &:active{
+        color: hsl(33, 95%, 38%);
+        transition: .1s color;
+        &:before {
+          box-shadow: inset -#{$arrow-border} $arrow-border 0 0 hsl(33, 95%, 38%);
+          transform:  translate(0.15em, -($arrow-size / 2)) rotate(45deg);
+          transition: .1s color, .1s transform;
+        }
+    }
+}
+
+//header bar
+@include media(">=phone", "<tablet") {
+}
+
+@include media(">1920px") {
+}
+.nav_header{
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    max-width: $broch-page-content-maxWidth;
+}
+
+// left-side of header bar
+.navLogo-container{
+    vertical-align: top;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    &:hover{
+        a > img{
+            filter: contrast(1.0);
+        }
+    }
+    a{
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        padding: .25rem 1.5rem .25rem 1.5rem;
+        img{
+            filter: contrast(.9);
+            display: flex;
+            align-self: center;
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+}
+.testX{
+    display: block;
+    width: 17px;
+    height: 1px;
+    background: #fff;
+    border-radius: 0.5px;
+    position: absolute;
+    left: 7px;
+    z-index: 1;
+}
+// right-side of header bar
+
+@include media("<tablet") {
+    .navMenu{
+        .navCollapseButton{
+            vertical-align: top;
+            display: flex;
+            width: 75px;
+            height: 100%;
+            background: salmon;
+            float: right;
+            transition: .2s background;
+            &:hover{
+                background: hsl(6, 60%, 57%);
+                cursor:pointer;
+            }
+            &:active{
+                background: hsl(6, 60%, 50%);
+            }
+        }
+    }
+}
+.navMenu{
+    width: 170px;
+}
+@include media("<tablet") {
+    .menu-topmenu-container{
+        height: 1%;
+        opacity: 0;
+        visibility:hidden;
+        &.open{
+            height: 100%;
+            opacity: 1;
+            visibility: visible;
+            animation: open_navMenu .2s;
+        }
+        &.ready{
+            transition: .2s linear all !important;
+        }
+    }
+    .nav_topMenu{
+        position: relative;
+        flex-direction: column;
+        li{
+            width: 170px;
+        }
+        li > a{
+            height: 75px;
+            width: 100%;
+            justify-content: flex-start !important;
+            background-color: hsl(0,0,60);
+            &:after{display:none;}
+        }
+    }
+}
+
+@include media(">=tablet") {
+    .menu-topmenu-container{
+        height: 100%;
+        opacity: 1;
+        visibility:visible;
+    }
+}
+
+// header
+.broch-header-bottom{
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    max-width: $broch-page-content-maxWidth;
+    background: hsla(0, 0, 75, .5);
+    bottom: -10px;
+    display: flex;
+    align-self: center;
+}
+
+.menu-topmenu-container{
+    vertical-align: top;
+    display: flex;
+    float: right;
+    .nav_topMenu{
+        display: flex;
+        height: 100%;
+        margin-bottom: 0;
+        padding: 0;
+        li{
+            border-collapse: collapse;
+            display: inline-flex;
+            height: 100%;
+            &:last-child{
+                a:after{display: none;}
+            }
+            a{   
+                font-family: Raleway;
+                font-weight: 600;
+                font-size: calc(13px + .25vmax);
+                color: hsl(0, 0%, 85%);
+                display: flex;
+                position: relative;
+                justify-content: center;
+                align-items: center;
+                padding: 0px 15px;
+                &:hover{
+                    background-color: salmon;
+                    &:after{display: none;}
+                }
+                &:after{
+                    content: '';
+                    position: absolute;
+                    top: 33%;
+                    bottom: 0;
+                    background: #f1f1f1;
+                    width: 1px;
+                    height: 33%;
+                    right: 0;
+                }
+            }
+        }
+    }
+    
+}
+
+
+//bbody of front page
+.parent{
+    background-size: contain;
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    &.gray{
+        background: gray;
+    }
+    &.yellow{
+        background: #fbbc11;
+    }
+}
+.broch-topmost{
+    margin-top: -75px;
+}
+.broch-banner-container{
+    z-index: 10;
+    display: flex;
+    position: relative;
+    height: 700px;
+    width: 100%;
+    max-width: 100%;
+    .broch-banner-image{
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        object-position: center 80%;
+    }
+}
+
+
+
+
+.splash-image-container{
+width: 100%;
+height: 500px;
+border: 1px greenyellow solid;
+}
+
+.broch-container{
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    align-self: center;
+}
+
+.broch-block-pattern{
+    background-image: url("/wp-content/images/pattern_2.png");
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    opacity: .10;
+    &.bottom{
+        transform: rotate(180deg);
+    }
+}
+
+.broch-highlight-title{
+    display: flex;
+    width: 100%;
+    white-space: nowrap;
+    break-after: 100px;
+    overflow-wrap: break-word;
+    font-family: "PT Sans";
+    font-weight: 700;
+    font-style: italic;
+    font-size: 275px;
+    line-height: 70%;
+    position: absolute;
+    color: hsl(44, 97%, 48%);
+    opacity: .6;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+
+
+@include media("<tablet") {
+    .broch-highlight-container{
+        flex-direction: column-reverse;
+        .broch-highlight-text-container{
+            transition: .2s all;
+            box-sizing: content-box;
+            padding: 20px 0 0 0;
+            width: 100%;
+            height: 50%;
+            .broch-highlight-content{
+                padding: 0;
+                
+                h1{
+                    font-size: 25px;
+                    padding: 0;
+                }
+                span{
+                    font-size: 20px;
+                    line-height: 25px;
+                }
+            }
+        }
+        .broch-highlight-image-container{
+            width: 100%;
+            height: 50%;
+            .broch-highlight-image{
+                height: 100%;
+            }
+        }
+    }
+}
+.broch-highlight-container{
+    height: 600px;
+    padding: 50px 50px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+
+
+    .broch-highlight-content{
+        z-index: 10;
+        max-width: 100%;
+        display: inline-flex;
+        flex-direction: column;
+        text-align: left;
+        font-family: "PT Sans";
+        line-height: 45px;
+        font-size: 20px;
+        color: #121212;
+        padding: 0px 70px 0px 0px;
+        h1{
+            font-size: 30px;
+            font-weight: 600;
+            color: hsl(0,0,20);
+        }
+        span{
+            color: hsl(0,0,20);
+        }
+        h1,span{
+            padding: 10px 0px;
+        }
+        button{
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    }
+    
+    .broch-highlight-image{
+        z-index: 10;
+        display: flex;
+        height: 70%;
+        max-width: 100%;
+        max-height: 500px;
+        img{
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+    }
+}
+
+
+.broch-info-container{
+    flex-direction: column;
+    padding: 50px;
+    .broch-info-header{
+        width: 100%;
+        height: 10%;
+        padding: 25px 0px;
+        h1{ 
+            font-size: 35px;
+            font-family: "PT Sans";
+            color: rgb(76, 148, 189);
+            font-weight: 500;
+            line-height: 1.2;
+        }
+    }
+    
+    @include media("<tablet") {
+        .broch-info-content-text span{
+            height: 60% !important;
+        }
+        .broch-info-content-text button{
+            position: absolute;
+            bottom: 0;
+        }
+        .broch-info-content-card-image{
+            height: 50%;
+        }
+        
+        .broch-info-content-text{
+            height: 50%;
+        }
+    }
+    .broch-info-content-container{
+        display: flex;
+        height: 90%;
+        width: 100%;
+        justify-content: space-between;
+        .broch-info-content-card{
+            display: inline-flex;
+            flex-direction: column;
+            height: 450px;
+            width: 30%;
+            .broch-info-content-card-image{
+                height: 40%;
+                width: 100%;
+                overflow: hidden;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+            .broch-info-content-text{
+                height: 60%;
+                width: 100%;
+                position: relative;
+                h2{
+                    padding: 25px 0px 10px 0px;
+                    font-size: calc(15px + .5vmax);
+                    font-family: "PT Sans";
+                    font-weight: 600;
+                    color: hsl(0, 0%, 35%);
+                    line-height: 0.9;
+                    text-align: left;
+                }
+                
+                span{
+                    display: flex;
+                    height: 40%;
+                    font-size: calc(15px + .15vmax);
+                    font-family: "PT Sans";
+                    color: rgb(76, 148, 189);
+                    line-height: 1.1;
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
