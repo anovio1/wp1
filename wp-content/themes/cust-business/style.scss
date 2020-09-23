@@ -757,6 +757,9 @@ border: 1px greenyellow solid;
 @include media("<tablet") {
     .broch-highlight-container{
         flex-direction: column-reverse;
+        &.double-text{
+            flex-direction: column;
+        }
         .broch-highlight-text-container{
             transition: .2s all;
             box-sizing: content-box;
@@ -765,7 +768,7 @@ border: 1px greenyellow solid;
             height: 50%;
             .broch-highlight-content{
                 padding: 0;
-                
+                width: 100%;
                 h1{
                     font-size: 25px;
                     padding: 0;
@@ -928,8 +931,19 @@ border: 1px greenyellow solid;
 
 .broch-footer{
     display: flex;
+    height: 50px;
     background-color: hsl(0,0%,25%);
     color: hsl(0, 0%, 65%);
     justify-content: center;
     align-items: center;
+    .connect-icon{
+        height: 50%;
+        width: auto;
+        margin: 0px 5px;
+        img{
+            height: 100%;
+            width: auto;
+            object-fit: fill;
+        }
+    }
 }
