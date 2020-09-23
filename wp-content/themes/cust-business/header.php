@@ -8,7 +8,7 @@
 <body <?php body_class();?>>
 
 
-<header class="d-flex sticky-top justify-content-center unfilled">
+<header class="d-flex justify-content-center unfilled">
         <div class="nav_header">
             <div class="navLogo-container">
                 <?php bb_getLogo()?>

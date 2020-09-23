@@ -2,9 +2,85 @@
 
 <div class="parent gray broch-topmost">
     <div class="broch-banner-container">
+        <div class="broch-banner-content-container">
+
+
+
+            <div class="broch-banner-content bw50 bh100 bjc bac bdynamic">
+
+                <div id="broch-banner-carousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                            <li data-target="#broch-banner-carousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#broch-banner-carousel" data-slide-to="1"></li>
+                            <li data-target="#broch-banner-carousel" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                        <img class="d-block w-100" src="/wp-content/images/stock/carousel1.jpg" alt="First slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="/wp-content/images/stock/carousel2.jpg" alt="Second slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="/wp-content/images/stock/carousel3.jpg" alt="Third slide">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#broch-banner-carousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#broch-banner-carousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <div class="broch-banner-carousel-capt-container">
+                    <span>Our comprehensive suite of</span>
+                    <h1>MANAGED SUPPORT SERVICES</h1>
+                    <span>has kept our customers happy and returning for advice</span>
+                    <button class="broch-button">Learn More</button>
+                </div>
+
+            </div>
+
+
+
+
+
+            <div class="broch-banner-content bw50 bh100 bjc bac bdynamic">
+                <div class="broch-banner-right-text">
+                    <h1>Let us help you weather the storm</h1>
+                    <span>Weyland-Yutani has been providing effective solutions for our clients across industries since 1946</span>
+                </div>
+                <div class="broch-banner-button-container">
+                    <button class="broch-button">Get a Quote</button>
+                    <button class="broch-button">Schedule a Call</button>
+                </div>
+            </div>
+
+
+
+
+
+
+
+        </div>
         <img class="broch-banner-image" src="/wp-content/images/stock/photo-1566.png"></img>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="">
 
 <h1><?php the_title();?></h1>
@@ -146,7 +222,7 @@
             </div>
 
             <div class="broch-info-content-card">
-                <div class="broch-info-content-card-image"><img src="/wp-content\images\stock\pexels-photo-3861968.jpg"></img></div>
+                <div class="broch-info-content-card-image"><img src="/wp-content\images\stock\carousel1"></img></div>
                 
                 <div class="broch-info-content-text">
                     <h2>Technology</h2>
