@@ -1,6 +1,6 @@
 <?php get_header();?>
 
-<div class="parent gray broch-topmost">
+<div class="parent gray">
     <div class="broch-banner-container">
         <div class="broch-banner-content-container">
 
@@ -53,8 +53,8 @@
                     <span>Weyland-Yutani has been providing effective solutions for our clients across industries since 1946</span>
                 </div>
                 <div class="broch-banner-button-container">
-                    <button class="broch-button">Get a Quote</button>
-                    <button class="broch-button">Schedule a Call</button>
+                    <button class="broch-button broch-banner-button">Get a Quote</button>
+                    <button class="broch-button broch-banner-button">Schedule a Call</button>
                 </div>
             </div>
 

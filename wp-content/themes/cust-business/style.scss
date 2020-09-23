@@ -5,6 +5,7 @@
 // The mdia mixin
 
 $arrow-color: #f1962a;
+$arrow-color-filled: white;
 $arrow-size: .75em;
 $arrow-border: 0.2em;
 $topnav-height: 75px;
@@ -292,7 +293,8 @@ header{
         div.nav_header > div.navMenu.noselect > div.menu-topmenu-container.ready.open > ul{
             li{
                 a{
-                    background: hsla(0, 0%, 50%, .5);
+                    transition: none;
+                    background: hsla(0, 0%, 25%, 1);
                 }
                 &:not(:last-child){
                     a:after{
@@ -391,6 +393,26 @@ header{
     }
     &.medium{
         font-size: 15px;
+    }
+    &.broch-banner-button{
+        margin: 5px 0px;
+        color: white;
+        border: 1px solid rgb(168, 97, 11);
+        background: #f1962a;
+        backdrop-filter: blur(3px);
+        border-radius: 5px;
+        padding-left: 8px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        margin-right: 8px;
+        &:before{
+            box-shadow: inset -#{$arrow-border} $arrow-border 0 0 $arrow-color-filled;
+        }
+        &:hover{
+            &:before{
+                box-shadow: inset -#{$arrow-border} $arrow-border 0 0 hsl(33, 88%, 45%);
+            }
+        }
     }
     font-family: "PT Sans";
     color: #f1962a;
@@ -690,9 +712,6 @@ header{
         background: #fbbc11;
     }
 }
-.broch-topmost{
-    margin-top: -75px;
-}
 .broch-banner-container{
     z-index: 10;
     display: flex;
@@ -803,7 +822,7 @@ header{
                     font-size: calc(14px + .5vmax);
                     font-family: "PT Sans";
                     color: rgb(255, 255, 255);
-                    line-height: 2.25;
+                    line-height: 1.5;
                 }
                 @include media("<tablet") {
                     span{
