@@ -2,7 +2,7 @@
 
 # wp1 Business Page Template
 
-<img style="padding-top:50px" src="/.preview/mobile1.png" align="right"
+<img style="padding-top:50px" src="/content/.preview/mobile1.png" align="right"
      alt="" width="250" height="443">
 
 Wp1 is a wordpress theme created and designed for businesses. It features a minimalistic  
@@ -26,15 +26,15 @@ desktop explains the business' advantages and allows for follow-ups
 ## Images
 ### Desktop
 <p align="center">
-  <img src="/.preview/page1.png" alt="" width="738">
+  <img src="/content/.preview/page1.png" alt="" width="738">
 </p>
 
 
 <p align="center">
-  <img src="/.preview/page2.png" alt="" width="738">
+  <img src="/content/.preview/page2.png" alt="" width="738">
 </p>
 
 
 <p align="center">
-  <img src="/.preview/page3.png" alt="" width="738">
+  <img src="/content/.preview/page3.png" alt="" width="738">
 </p>
