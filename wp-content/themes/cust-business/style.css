@@ -303,6 +303,12 @@ header.unfilled.filled div.nav_header > div.navMenu.noselect > div.menu-topmenu-
   font-size: 15px;
 }
 
+@media screen and (max-width: 640px) {
+  .broch-button.mediaSmall {
+    font-size: 13px;
+  }
+}
+
 .broch-button.broch-banner-button {
   margin: 5px 0px;
   color: white;
@@ -517,7 +523,7 @@ header.unfilled.filled div.nav_header > div.navMenu.noselect > div.menu-topmenu-
   }
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .navMenu .navCollapseButton {
     vertical-align: top;
     display: -webkit-box;
@@ -584,7 +590,7 @@ header.unfilled.filled div.nav_header > div.navMenu.noselect > div.menu-topmenu-
   width: 170px;
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .menu-topmenu-container {
     height: 1%;
     opacity: 0;
@@ -624,7 +630,7 @@ header.unfilled.filled div.nav_header > div.navMenu.noselect > div.menu-topmenu-
   }
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .menu-topmenu-container {
     height: 100%;
     opacity: 1;
@@ -704,7 +710,7 @@ header.unfilled.filled div.nav_header > div.navMenu.noselect > div.menu-topmenu-
   display: none;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .menu-topmenu-container .nav_topMenu li a:after {
     content: '';
     position: absolute;
@@ -779,15 +785,6 @@ header.unfilled.filled div.nav_header > div.navMenu.noselect > div.menu-topmenu-
   margin-top: 75px;
   height: calc(100% - 75px);
   z-index: 5;
-}
-
-@media (max-width: 767px) {
-  .broch-banner-container .broch-banner-content-container .broch-banner-content:first-of-type {
-    padding: 50px 25px 50px 25px !important;
-  }
-  .broch-banner-container .broch-banner-content-container .broch-banner-content:nth-of-type(2) {
-    padding: 50px 50px 50px 25px !important;
-  }
 }
 
 .broch-banner-container .broch-banner-content-container .broch-banner-content:first-of-type {
@@ -865,7 +862,6 @@ header.unfilled.filled div.nav_header > div.navMenu.noselect > div.menu-topmenu-
 }
 
 .broch-banner-container .broch-banner-content-container .broch-banner-content:nth-of-type(2) .broch-banner-right-text {
-  height: 70%;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -877,13 +873,13 @@ header.unfilled.filled div.nav_header > div.navMenu.noselect > div.menu-topmenu-
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
 }
 
 .broch-banner-container .broch-banner-content-container .broch-banner-content:nth-of-type(2) .broch-banner-right-text h1 {
-  padding: 20px 0px;
+  padding: 0px 0px 20px 0px;
   width: 100%;
   font-size: calc(25px + .5vmax);
   font-family: "PT Sans";
@@ -894,14 +890,15 @@ header.unfilled.filled div.nav_header > div.navMenu.noselect > div.menu-topmenu-
 }
 
 .broch-banner-container .broch-banner-content-container .broch-banner-content:nth-of-type(2) .broch-banner-right-text span {
+  padding: 0px 0px 20px 0px;
   width: 100%;
   font-size: calc(14px + .5vmax);
   font-family: "PT Sans";
   color: white;
-  line-height: 1.5;
+  line-height: 1.75;
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .broch-banner-container .broch-banner-content-container .broch-banner-content:nth-of-type(2) .broch-banner-right-text span {
     line-height: 1.5;
   }
@@ -916,6 +913,27 @@ header.unfilled.filled div.nav_header > div.navMenu.noselect > div.menu-topmenu-
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+@media (max-width: 767px) {
+  .broch-banner-container .broch-banner-content-container .broch-banner-content:first-of-type {
+    padding: 50px 25px 50px 25px;
+  }
+  .broch-banner-container .broch-banner-content-container .broch-banner-content:nth-of-type(2) {
+    padding: 25px 50px 50px 25px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .broch-banner-container .broch-banner-content-container .broch-banner-content:nth-of-type(2) {
+    padding: 25px 25px 25px 25px;
+  }
+  .broch-banner-container .broch-banner-content-container .broch-banner-content:nth-of-type(2) .broch-banner-right-text h1 {
+    font-size: calc(18px + .5vmax);
+  }
+  .broch-banner-container .broch-banner-content-container .broch-banner-content:nth-of-type(2) .broch-banner-right-text span {
+    font-size: calc(14px + .5vmax);
+  }
 }
 
 .splash-image-container {
@@ -1098,6 +1116,12 @@ header.unfilled.filled div.nav_header > div.navMenu.noselect > div.menu-topmenu-
   padding: 50px;
 }
 
+@media screen and (max-width: 640px) {
+  .broch-info-container {
+    padding: 25px;
+  }
+}
+
 .broch-info-container .broch-info-header {
   width: 100%;
   height: 10%;
@@ -1110,18 +1134,6 @@ header.unfilled.filled div.nav_header > div.navMenu.noselect > div.menu-topmenu-
   color: #4c94bd;
   font-weight: 500;
   line-height: 1.2;
-}
-
-@media (max-width: 767px) {
-  .broch-info-container .broch-info-content-text span {
-    height: 60% !important;
-  }
-  .broch-info-container .broch-info-content-card-image {
-    height: 50%;
-  }
-  .broch-info-container .broch-info-content-text {
-    height: 50%;
-  }
 }
 
 .broch-info-container .broch-info-content-container {
@@ -1144,7 +1156,7 @@ header.unfilled.filled div.nav_header > div.navMenu.noselect > div.menu-topmenu-
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 450px;
+  height: 500px;
   width: 30%;
 }
 
@@ -1190,6 +1202,27 @@ header.unfilled.filled div.nav_header > div.navMenu.noselect > div.menu-topmenu-
   color: #4c94bd;
   line-height: 1.1;
   text-align: left;
+}
+
+@media screen and (max-width: 767px) {
+  .broch-info-container .broch-info-content-container .broch-info-content-card .broch-info-content-text span {
+    height: 60% !important;
+  }
+  .broch-info-container .broch-info-content-container .broch-info-content-card .broch-info-content-card-image {
+    height: 50%;
+  }
+  .broch-info-container .broch-info-content-container .broch-info-content-card .broch-info-content-text {
+    height: 50%;
+  }
+  .broch-info-container .broch-info-content-container .broch-info-content-card .broch-info-content-text h2 {
+    height: 25%;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .broch-info-container .broch-info-content-container .broch-info-content-card .broch-info-content-text span {
+    font-size: calc(13px + .15vmax);
+  }
 }
 
 .broch-footer {

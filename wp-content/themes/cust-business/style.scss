@@ -394,6 +394,11 @@ header{
     &.medium{
         font-size: 15px;
     }
+    &.mediaSmall{
+        @include media("screen", "<=phone") {
+            font-size: 13px;
+        }
+    }
     &.broch-banner-button{
         margin: 5px 0px;
         color: white;
@@ -458,10 +463,10 @@ header{
 }
 
 //header bar
-@include media(">=phone", "<tablet") {
+@include media("screen", ">=phone", "<tablet") {
 }
 
-@include media(">1920px") {
+@include media("screen", ">1920px") {
 }
 .nav_header{
     display: flex;
@@ -540,7 +545,7 @@ header{
     }
 }
 
-@include media("<tablet") {
+@include media("screen", "<tablet") {
     .navMenu{
         .navCollapseButton{
             vertical-align: top;
@@ -593,7 +598,7 @@ header{
 .navMenu{
     width: 170px;
 }
-@include media("<tablet") {
+@include media("screen", "<tablet") {
     .menu-topmenu-container{
         height: 1%;
         opacity: 0;
@@ -624,7 +629,7 @@ header{
     }
 }
 
-@include media(">=tablet") {
+@include media("screen", ">=tablet") {
     .menu-topmenu-container{
         height: 100%;
         opacity: 1;
@@ -677,7 +682,7 @@ header{
                     &:after{display: none;}
                 }
                 
-                @include media(">=tablet") {
+                @include media("screen", ">=tablet") {
                     &:after{
                         content: '';
                         position: absolute;
@@ -739,16 +744,6 @@ header{
         margin-top: $topnav-height;
         height: calc(100% - #{$topnav-height});
         z-index: 5;
-        
-        @include media("<tablet") {
-            .broch-banner-content:first-of-type{
-                padding: 50px 25px 50px 25px !important;
-            }
-            
-            .broch-banner-content:nth-of-type(2){
-                padding: 50px 50px 50px 25px !important;
-            }
-        }
         .broch-banner-content:first-of-type{
             background: hsla(0, 0%, 50%, .01);
             flex-direction: column;
@@ -801,14 +796,14 @@ header{
             flex-direction: column;
             padding: 50px;
             .broch-banner-right-text{
-                height: 70%;
+                //height: 60%;
                 width: 100%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                justify-content: center;
+                justify-content: start;
                 h1{
-                    padding: 20px 0px;
+                    padding: 0px 0px 20px 0px;
                     width: 100%;
                     font-size: calc(25px + .5vmax);
                     font-family: "PT Sans";
@@ -818,13 +813,14 @@ header{
                     text-align: left;
                 }
                 span{
+                    padding: 0px 0px 20px 0px;
                     width: 100%;
                     font-size: calc(14px + .5vmax);
                     font-family: "PT Sans";
                     color: rgb(255, 255, 255);
-                    line-height: 1.5;
+                    line-height: 1.75;
                 }
-                @include media("<tablet") {
+                @include media("screen", "<tablet") {
                     span{
                         line-height: 1.5;
                     }
@@ -835,6 +831,30 @@ header{
                 width: 100%;
                 button{
                     display: inline-flex;
+                }
+            }
+        }
+        
+        @include media("<tablet") {
+            .broch-banner-content:first-of-type{
+                padding: 50px 25px 50px 25px;
+            }
+            
+            .broch-banner-content:nth-of-type(2){
+                padding: 25px 50px 50px 25px;
+            }
+        }
+        @include media("screen", "<=phone"){
+            
+            .broch-banner-content:nth-of-type(2){
+                padding: 25px 25px 25px 25px;
+                .broch-banner-right-text{
+                    h1{
+                        font-size: calc(18px + .5vmax);
+                    }
+                    span{
+                        font-size: calc(14px + .5vmax);
+                    }
                 }
             }
         }
@@ -987,6 +1007,12 @@ border: 1px greenyellow solid;
 .broch-info-container{
     flex-direction: column;
     padding: 50px;
+    
+    @include media("screen", "<=phone") {
+        &{
+            padding: 25px;
+        }
+    }
     .broch-info-header{
         width: 100%;
         height: 10%;
@@ -1000,20 +1026,6 @@ border: 1px greenyellow solid;
         }
     }
     
-    @include media("<tablet") {
-        .broch-info-content-text span{
-            height: 60% !important;
-        }
-        .broch-info-content-text button{
-        }
-        .broch-info-content-card-image{
-            height: 50%;
-        }
-        
-        .broch-info-content-text{
-            height: 50%;
-        }
-    }
     .broch-info-content-container{
         display: flex;
         height: 90%;
@@ -1023,7 +1035,7 @@ border: 1px greenyellow solid;
         .broch-info-content-card{
             display: inline-flex;
             flex-direction: column;
-            height: 450px;
+            height: 500px;
             width: 30%;
             .broch-info-content-card-image{
                 height: 40%;
@@ -1060,6 +1072,32 @@ border: 1px greenyellow solid;
                     line-height: 1.1;
                     text-align: left;
                 }
+            }
+            @include media("screen", "<tablet") {
+                .broch-info-content-text span{
+                    height: 60% !important;
+                }
+                .broch-info-content-text button{
+                }
+                .broch-info-content-card-image{
+                    height: 50%;
+                }
+                
+                .broch-info-content-text{
+                    height: 50%;
+                    h2{
+                        height: 25%;
+                    }
+                }
+            }
+            @include media("screen", "<=phone") {
+                
+                .broch-info-content-text{
+                    span{
+                        font-size: calc(13px + .15vmax);
+                    }
+                }
+                
             }
         }
     }

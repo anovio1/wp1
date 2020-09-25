@@ -83,11 +83,32 @@
 
 <div class="">
 
-<h1><?php the_title();?></h1>
-<?php if (have_posts()) : while(have_posts()) : the_post();?>
-            <?php the_content();?>
-        <?php endwhile; endif; ?>
-</div>
+<?php
+// content::htmlHighlight();
+// $args = array(
+//     'post_type' => 'post',
+//     'post_status' => 'publish',
+//     'category_name' => 'highlight',
+//     'posts_per_page' => 5,
+// );
+// $arr_posts = new WP_Query( $args );
+ 
+// if ( $arr_posts->have_posts() ) :
+ 
+//     while ( $arr_posts->have_posts() ) :
+//         $arr_posts->the_post();
+//         $passObj = (object)[
+//             "title"=>the_title('','',false), 
+//             "subtext"=>get_the_content(), 
+//             "excerptLink"=>get_the_excerpt(),
+//             "imageUrl"=>get_the_post_thumbnail_url()
+//         ];
+//         echo content::htmlHighlight("textImage",$passObj);
+//         ?>
+         <?php
+//     endwhile;
+// endif;
+?>
 
 <div class="parent white">
     <div class="broch-container broch-info-container">
@@ -103,7 +124,7 @@
                 <div class="broch-info-content-text">
                     <h2>Talent Acquisition</h2>
                     <span>We provide a vast suite of options for executive needs, recruitment needs, or project management.</span>
-                    <button class="broch-button">Learn More</button>
+                    <button class="broch-button mediaSmall">Learn More</button>
                 </div>
             </div>
 
@@ -112,7 +133,7 @@
                 <div class="broch-info-content-text">
                     <h2>Product Development</h2>
                     <span>We accelerate product development at any stage of the creation process.</span>
-                    <button class="broch-button">Learn More</button>
+                    <button class="broch-button mediaSmall">Learn More</button>
                 </div>
             </div>
 
@@ -122,7 +143,7 @@
                 <div class="broch-info-content-text">
                     <h2>Other Solutions</h2>
                     <span>Our experience in numerous industries has given us a unique position to provide solutions to unconventional problems</span>
-                    <button class="broch-button">Learn More</button>
+                    <button class="broch-button mediaSmall">Learn More</button>
                 </div>
             </div>
 
@@ -174,7 +195,7 @@
                 <div class="broch-info-content-text">
                     <h2>Engineering</h2>
                     <span>We help finalize product ideas at any point of the design timeline: giving recommendations, providing insight, and fulfilling end use-cases.</span>
-                    <button class="broch-button">Learn More</button>
+                    <button class="broch-button mediaSmall">Learn More</button>
                 </div>
             </div>
 
@@ -183,7 +204,7 @@
                 <div class="broch-info-content-text">
                     <h2>Logistics</h2>
                     <span>Finding the most efficient transportation or providing safety through dangerous areas to get products where they are needed.</span>
-                    <button class="broch-button">Learn More</button>
+                    <button class="broch-button mediaSmall">Learn More</button>
                 </div>
             </div>
 
@@ -193,7 +214,7 @@
                 <div class="broch-info-content-text">
                     <h2>Biotech</h2>
                     <span>We have worked with companies at the forefront and utilize our expertise to provide catered solutions to improve research.</span>
-                    <button class="broch-button">Learn More</button>
+                    <button class="broch-button mediaSmall">Learn More</button>
                 </div>
             </div>
 
@@ -208,7 +229,7 @@
                 <div class="broch-info-content-text">
                     <h2>Mining</h2>
                     <span>Location analysis, tool acquisition, and logistics analysis will help with completion of projects.</span>
-                    <button class="broch-button">Learn More</button>
+                    <button class="broch-button mediaSmall">Learn More</button>
                 </div>
             </div>
 
@@ -217,7 +238,7 @@
                 <div class="broch-info-content-text">
                     <h2>Military</h2>
                     <span>We provide analysis, acqusition, and training to individuals or groups..</span>
-                    <button class="broch-button">Learn More</button>
+                    <button class="broch-button mediaSmall">Learn More</button>
                 </div>
             </div>
 
@@ -227,7 +248,7 @@
                 <div class="broch-info-content-text">
                     <h2>Technology</h2>
                     <span>We leverage our knowledge and experts on the forefront of technological subjects to provide solutions</span>
-                    <button class="broch-button">Learn More</button>
+                    <button class="broch-button mediaSmall">Learn More</button>
                 </div>
             </div>
 

@@ -1,5 +1,5 @@
 <?php
-
+add_theme_support( 'post-thumbnails' );
 add_theme_support('menus');
 add_action( 'after_setup_theme', 'custom_logo_setup' );
 
@@ -82,4 +82,52 @@ function loadjs(){
 
     
     include_bootstrapjs();
+}
+
+
+class content{
+
+    /// mode - type of highlight, double text, text with image
+    /*
+        $passObj = (object)[
+            "title"=>the_title('','',false), 
+            "subtext"=>get_the_excerpt(), 
+            "imageUrl"=>get_the_post_thumbnail_url()
+        ];
+        echo content::htmlHighlight("textImage",$passObj);
+        */
+    static function htmlHighlight($mode, $passedObj){
+        switch($mode){
+            case "textImage":
+                $return = "";
+                $return .= '
+                <div class="parent yellow">
+                <div class="broch-container broch-highlight-container">
+                    <!-- <div class="broch-highlight-title noselect">Why Us</div> -->
+                    <div class="broch-highlight-text-container bw40 bh100 bjc bac bdynamic">
+                        <div class="broch-highlight-content">
+                            <h1>'.
+                            $passedObj->title
+                            .'</h1>
+                            <span>'.
+                            $passedObj->subtext
+                            .'</span>
+                            <button class="broch-button large">Learn More</button>
+                        </div>
+                    </div>
+                    <div class="broch-highlight-image-container bw60 bh100 bjc bac bdynamic">
+                        <div class="broch-highlight-image">
+                            <img src="'.
+                            $passedObj->imageUrl
+                            .'"></img>
+                        </div>
+                    </div>
+                </div>
+                <div class="broch-block-pattern top"></div>
+                <div class="broch-block-pattern bottom"></div>
+                </div>
+                ';
+                return $return;
+        }
+    }
 }
