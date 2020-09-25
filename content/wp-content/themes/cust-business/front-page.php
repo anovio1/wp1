@@ -280,7 +280,7 @@
     <div class="broch-block-pattern bottom"></div>
 </div>
 
-<div class="parent yellow">
+<div class="parent white">
     <div class="broch-container broch-highlight-container double-text">
         <!-- <div class="broch-highlight-title noselect">Why Us</div> -->
         <div class="broch-highlight-text-container bw40 bh100 bjc bac bdynamic">
