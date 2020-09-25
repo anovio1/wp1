@@ -53,8 +53,8 @@
                     <span>Weyland-Yutani has been providing effective solutions for our clients across industries since 1946</span>
                 </div>
                 <div class="broch-banner-button-container">
-                    <button class="broch-button broch-banner-button">Get a Quote</button>
-                    <button class="broch-button broch-banner-button">Schedule a Call</button>
+                    <button class="broch-button noselect broch-banner-button">Get a Quote</button>
+                    <button class="broch-button noselect broch-banner-button">Schedule a Call</button>
                 </div>
             </div>
 
@@ -124,7 +124,7 @@
                 <div class="broch-info-content-text">
                     <h2>Talent Acquisition</h2>
                     <span>We provide a vast suite of options for executive needs, recruitment needs, or project management.</span>
-                    <button class="broch-button mediaSmall">Learn More</button>
+                    <button class="broch-button noselect mediaSmall">Learn More</button>
                 </div>
             </div>
 
@@ -133,7 +133,7 @@
                 <div class="broch-info-content-text">
                     <h2>Product Development</h2>
                     <span>We accelerate product development at any stage of the creation process.</span>
-                    <button class="broch-button mediaSmall">Learn More</button>
+                    <button class="broch-button noselect mediaSmall">Learn More</button>
                 </div>
             </div>
 
@@ -143,7 +143,7 @@
                 <div class="broch-info-content-text">
                     <h2>Other Solutions</h2>
                     <span>Our experience in numerous industries has given us a unique position to provide solutions to unconventional problems</span>
-                    <button class="broch-button mediaSmall">Learn More</button>
+                    <button class="broch-button noselect mediaSmall">Learn More</button>
                 </div>
             </div>
 
@@ -165,7 +165,7 @@
             <div class="broch-highlight-content">
                 <h1>Why Us</h1>
                 <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
-                <button class="broch-button large">Learn More</button>
+                <button class="broch-button noselect large">Learn More</button>
             </div>
         </div>
         <div class="broch-highlight-image-container bw60 bh100 bjc bac bdynamic">
@@ -195,7 +195,7 @@
                 <div class="broch-info-content-text">
                     <h2>Engineering</h2>
                     <span>We help finalize product ideas at any point of the design timeline: giving recommendations, providing insight, and fulfilling end use-cases.</span>
-                    <button class="broch-button mediaSmall">Learn More</button>
+                    <button class="broch-button noselect mediaSmall">Learn More</button>
                 </div>
             </div>
 
@@ -204,7 +204,7 @@
                 <div class="broch-info-content-text">
                     <h2>Logistics</h2>
                     <span>Finding the most efficient transportation or providing safety through dangerous areas to get products where they are needed.</span>
-                    <button class="broch-button mediaSmall">Learn More</button>
+                    <button class="broch-button noselect mediaSmall">Learn More</button>
                 </div>
             </div>
 
@@ -214,7 +214,7 @@
                 <div class="broch-info-content-text">
                     <h2>Biotech</h2>
                     <span>We have worked with companies at the forefront and utilize our expertise to provide catered solutions to improve research.</span>
-                    <button class="broch-button mediaSmall">Learn More</button>
+                    <button class="broch-button noselect mediaSmall">Learn More</button>
                 </div>
             </div>
 
@@ -229,7 +229,7 @@
                 <div class="broch-info-content-text">
                     <h2>Mining</h2>
                     <span>Location analysis, tool acquisition, and logistics analysis will help with completion of projects.</span>
-                    <button class="broch-button mediaSmall">Learn More</button>
+                    <button class="broch-button noselect mediaSmall">Learn More</button>
                 </div>
             </div>
 
@@ -238,7 +238,7 @@
                 <div class="broch-info-content-text">
                     <h2>Military</h2>
                     <span>We provide analysis, acqusition, and training to individuals or groups..</span>
-                    <button class="broch-button mediaSmall">Learn More</button>
+                    <button class="broch-button noselect mediaSmall">Learn More</button>
                 </div>
             </div>
 
@@ -248,7 +248,7 @@
                 <div class="broch-info-content-text">
                     <h2>Technology</h2>
                     <span>We leverage our knowledge and experts on the forefront of technological subjects to provide solutions</span>
-                    <button class="broch-button mediaSmall">Learn More</button>
+                    <button class="broch-button noselect mediaSmall">Learn More</button>
                 </div>
             </div>
 
@@ -267,7 +267,7 @@
             <div class="broch-highlight-content">
                 <h1>Building the future</h1>
                 <span>Weyland-Yutani is interested in a better future and has provided solutions across numerous industries for more than 40 years</span>
-                <button class="broch-button large">Learn More</button>
+                <button class="broch-button noselect large">Learn More</button>
             </div>
         </div>
         <div class="broch-highlight-image-container bw60 bh100 bjc bac bdynamic">
@@ -287,7 +287,7 @@
             <div class="broch-highlight-content">
                 <h1>Contact Us</h1>
                 <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
-                <button class="broch-button large">Contact Us</button>
+                <button class="broch-button noselect large">Contact Us</button>
             </div>
         </div>
         <div class="broch-highlight-text-container bw40 bh100 bjc bac bdynamic">

@@ -328,9 +328,13 @@ header.unfilled.filled div.nav_header > div.navMenu.noselect > div.menu-topmenu-
           box-shadow: inset -0.2em 0.2em 0 0 white;
 }
 
+.broch-button.broch-banner-button:hover {
+  color: #fcc178;
+}
+
 .broch-button.broch-banner-button:hover:before {
-  -webkit-box-shadow: inset -0.2em 0.2em 0 0 #d87d0e;
-          box-shadow: inset -0.2em 0.2em 0 0 #d87d0e;
+  -webkit-box-shadow: inset -0.2em 0.2em 0 0 #fcc178;
+          box-shadow: inset -0.2em 0.2em 0 0 #fcc178;
 }
 
 .broch-button:before {
@@ -788,7 +792,6 @@ header.unfilled.filled div.nav_header > div.navMenu.noselect > div.menu-topmenu-
 }
 
 .broch-banner-container .broch-banner-content-container .broch-banner-content:first-of-type {
-  background: rgba(128, 128, 128, 0.01);
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -853,7 +856,6 @@ header.unfilled.filled div.nav_header > div.navMenu.noselect > div.menu-topmenu-
 }
 
 .broch-banner-container .broch-banner-content-container .broch-banner-content:nth-of-type(2) {
-  background: rgba(159, 149, 96, 0.01);
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;

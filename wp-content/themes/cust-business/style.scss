@@ -414,8 +414,9 @@ header{
             box-shadow: inset -#{$arrow-border} $arrow-border 0 0 $arrow-color-filled;
         }
         &:hover{
+            color: hsl(33, 96%, 73%);
             &:before{
-                box-shadow: inset -#{$arrow-border} $arrow-border 0 0 hsl(33, 88%, 45%);
+                box-shadow: inset -#{$arrow-border} $arrow-border 0 0 hsl(33, 96%, 73%);
             }
         }
     }
@@ -745,7 +746,7 @@ header{
         height: calc(100% - #{$topnav-height});
         z-index: 5;
         .broch-banner-content:first-of-type{
-            background: hsla(0, 0%, 50%, .01);
+            //background: hsla(0, 0%, 50%, .00);
             flex-direction: column;
             padding: 50px;
 
@@ -792,7 +793,7 @@ header{
             }
         }
         .broch-banner-content:nth-of-type(2){
-            background: hsla(50, 25%, 50%, .01);
+            //background: hsla(50, 25%, 50%, .00);
             flex-direction: column;
             padding: 50px;
             .broch-banner-right-text{
